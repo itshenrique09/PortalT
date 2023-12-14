@@ -16,13 +16,22 @@ class AuthController extends Controller
     }
 
     public function register(Request $request){
-        return User::create([
+        $user = User::create([
             'firstName' => $request->input('firstName'),
             'lastName' => $request->input('lastName'),
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')) 
         ]);
+    
+        $token = $user->createToken('secrettoken')->plainTextToken;
+        $cookie = cookie('jwt', $token, 60 * 24); // 1 day
+    
+        return response([
+            'user' => $user,
+            'token' => $token,
+        ])->withCookie($cookie);
     }
+    
 
     public function login(Request $request){
         if (!Auth::attempt($request->only('email','password'))){
@@ -35,7 +44,8 @@ class AuthController extends Controller
         $cookie = cookie('jwt', $token,60 * 24); //1day
 
         return response([
-            'message' => 'Success'
+            'user' => Auth::user(),
+            'token' => $token,
         ])->withCookie($cookie);
     }
 

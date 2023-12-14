@@ -6,7 +6,8 @@ import { catchError, Observable, throwError } from 'rxjs';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json'
-  })
+  }),
+  withCredentials : true
 };
 
 @Injectable({
@@ -22,6 +23,14 @@ export class AuthService {
 
   getLogin(email: string, password: string): Observable<any> {
     return this.http.post(environment.apiUrl + 'login', new LoginModel(email, password), httpOptions).pipe(catchError(this.handleError));
+  }
+
+  logedUser(): Observable<any>{
+    return this.http.get(environment.apiUrl + 'users', httpOptions).pipe(catchError(this.handleError));
+  }
+
+  logout(): Observable<any>{
+    return this.http.post(environment.apiUrl + 'logout', httpOptions).pipe(catchError(this.handleError));
   }
 
   handleError(error: HttpErrorResponse) {

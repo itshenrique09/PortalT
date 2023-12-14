@@ -18,10 +18,8 @@ export class LoginComponent {
   login() {
     this.authService.getLogin(this.email, this.password).subscribe({
       next: (data) => { 
-        if (data.auth === true) {
-          localStorage.setItem("token", data.jwt);
+          localStorage.setItem("token", data.token);
           this.router.navigate(['/']);
-        }
       },
       error: (error) => {
         console.log(error)

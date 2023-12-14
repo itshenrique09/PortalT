@@ -20,10 +20,8 @@ export class RegisterComponent {
   register() {
     this.authService.getRegister(this.firstName,this.lastName ,this.email, this.password).subscribe({
       next: (data) => {
-        if(data.auth = true){
           localStorage.setItem('token', data.token);
           this.router.navigate(['/']);
-        }
       },
       error: (error) => {
         this.errorMessage = error.error.message

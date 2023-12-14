@@ -1,5 +1,45 @@
-<nav class="navbar bg-body-tertiary">
-    <div class="container-fluid">
-      <span class="navbar-brand mb-0 h1">Navbar</span>
-    </div>
-  </nav>
+<nav class="navbar navbar-expand-lg navbar-light py-0">
+  <div class="container px-4 px-lg-5">
+      <div class="navbar-container">
+          <a href="" class="navbar-brand" (click)="toHome()">PortalT</a>
+      </div>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div *ngIf="loginStatus.getStatus() == false" class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ms-auto my-2 my-lg-3">
+              <li class="nav-item px-4">
+                  <button class="nav-link btn shadow-none" (click)="toHome()">
+                      Home
+                  </button>
+              </li>
+              <li class="nav-item px-4">
+                  <button class="nav-link btn shadow-none" (click)="toLogin()">
+                      Login
+                  </button>
+              </li>
+          </ul>
+      </div>
+
+      <div *ngIf="loginStatus.getStatus() == true" class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ms-auto my-2 my-lg-3">
+              <li class="nav-item px-4">
+                  <button class="nav-link btn shadow-none" (click)="toHome()">
+                      Home
+                  </button>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">{{firstName}} {{lastName}}</a>
+                <ul class="dropdown-menu">
+                  <li><button class="nav-link btn shadow-none" (click)="toLogout()"> Logout
+                </button></li>
+                </ul>
+              </li>
+          </ul>
+      </div>
+  </div>
+</nav>

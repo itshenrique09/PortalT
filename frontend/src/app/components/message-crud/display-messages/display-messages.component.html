@@ -1,0 +1,29 @@
+<div style="padding: 20px 20% 0 20%;">
+  <div class="chat_list">
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let message of messagesWithUsers">
+        <button (click)="moveMessageUp(message)" class="arrow-button">&#9650;</button>
+        <button (click)="moveMessageDown(message)" class="arrow-button">&#9660;</button>
+        <small class="pull-right text-muted">{{ message.created_at | date: 'dd/MM/yyyy HH:mm:ss' }}</small>
+        <div>
+          <small class="list-group-item-heading text-muted text-primary">
+            {{ message.user.user.firstName }} {{ message.user.user.lastName }}
+          </small>
+          <p class="list-group-item-text">
+            {{ message.message }}
+            <button class="delete-button" (click)="deleteMessage(message.id)"><svg xmlns="http://www.w3.org/2000/svg"
+                width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                <path
+                  d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0" />
+              </svg></button>
+          </p>
+        </div>
+      </li>
+    </ul>
+    <div class="form-group d-flex align-items-center justify-content-center pt-2">
+      <div *ngIf="wrong">
+        <div class="alert alert-danger mt-1 text-center" role="alert">{{errorMessage}}</div>
+      </div>
+    </div>
+  </div>
+</div>

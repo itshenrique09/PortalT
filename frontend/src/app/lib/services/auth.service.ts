@@ -33,6 +33,11 @@ export class AuthService {
     return this.http.post(environment.apiUrl + 'logout', httpOptions).pipe(catchError(this.handleError));
   }
 
+  getUsersByIds(id: any): Observable<any> {
+    const url = `${environment.apiUrl}user/${id}`;
+    return this.http.get(url, httpOptions).pipe(catchError(this.handleError));
+  }
+
   handleError(error: HttpErrorResponse) {
     return throwError(() => {
       return error;
@@ -43,7 +48,6 @@ export class AuthService {
 export class RegisterModel {
   constructor(public firstName: string, public lastName: string ,public email: string, public password: string) { }
 }
-
 
 export class LoginModel {
   constructor(public email: string, public password: string) { }

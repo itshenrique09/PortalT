@@ -1,0 +1,54 @@
+.chat-list {
+    max-width: 600px; 
+    margin: 20px auto;
+  }
+  
+  .list-group-item {
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  
+  .list-group-item-heading {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .text-muted {
+    color: #888;
+  }
+  
+  .pull-right {
+    float: right;
+  }
+  
+  .arrow-button {
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 5px;
+  }
+  
+  .arrow-button:hover {
+    color:  rgb(214, 213, 213);
+  }
+
+  .list-group-item {
+    position: relative;
+}
+
+.delete-button {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+}
+
+  

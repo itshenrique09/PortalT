@@ -1,1 +1,13 @@
-<p>message-crud works!</p>
+<app-display-messages></app-display-messages>
+
+<div class="container-fuild p-0 mt-2">
+  <div class="container">
+    <div class="mb-3">
+      <textarea class="form-control" rows="3" id="inputmessage" placeholder="Text Area" name="message"
+        [(ngModel)]="message" #messageControl="ngModel" ngModel></textarea>
+    </div>
+    <div class="col-auto">
+      <button type="submit" class="btn btn-primary mb-3" (click)="sendMessage()">Send</button>
+    </div>
+  </div>
+</div>

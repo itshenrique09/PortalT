@@ -55,4 +55,17 @@ class AuthController extends Controller
         'message' => 'Success'
        ])->withCookie($cookie);
     }
+
+    public function getUserById($id){
+    $user = User::find($id);
+    if (!$user) {
+        return response([
+            'message' => 'User not found'
+        ], Response::HTTP_NOT_FOUND);
+    }
+    return response([
+        'user' => $user
+    ]);
+}
+
 }

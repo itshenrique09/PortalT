@@ -11,6 +11,7 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { MessageCrudComponent } from './components/message-crud/message-crud.component';
 import { LoginStatusComponent } from './components/auth/login-status/login-status.component';
 import { AuthInterceptor } from './lib/interceptors/auth.interceptor';
+import { DisplayMessagesComponent } from './components/message-crud/display-messages/display-messages.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AuthInterceptor } from './lib/interceptors/auth.interceptor';
     RegisterComponent,
     LoginComponent,
     MessageCrudComponent,
-    LoginStatusComponent
+    LoginStatusComponent,
+    DisplayMessagesComponent
   ],
   imports: [
     BrowserModule,
